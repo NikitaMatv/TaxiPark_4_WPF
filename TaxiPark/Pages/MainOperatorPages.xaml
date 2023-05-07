@@ -1,0 +1,37 @@
+﻿<Page x:Class="TaxiPark.Pages.MainOperatorPages"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TaxiPark.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="350"
+      Title="MainOperatorPages">
+    
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Image Source="/Resourse/Car.png" Width="200" Height="80" Margin="0 -200 0  0"></Image>
+            <ListView Height="319" Width="269"  Margin="0 0 0  80" x:Name="LvAccept">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Width="180">
+                                <TextBlock Text="{Binding AddressStart, StringFormat= 'От {0}.'}"></TextBlock>
+                                <TextBlock Text="{Binding AddressEnd, StringFormat= 'До {0}.'}"></TextBlock>
+                                <TextBlock Text="{Binding Price, StringFormat= 'Цена {0} руб.'}"></TextBlock>
+                            </StackPanel>
+                            <StackPanel>
+                                <Button x:Name="AcceptBt" Background="Green" Click="AcceptBt_Click" >Подтвердить</Button>
+                                <Button  x:Name="DellBt" Background="Red" Click="DellBt_Click" >Откланить</Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 20 ">
+
+                <Button Margin="0 0 0 0" FontWeight="ExtraBold" FontSize="12" x:Name="ProfilBt" Background="#E9E9E9" Click="ProfilBt_Click" Height="40" Width="142">Профиль</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

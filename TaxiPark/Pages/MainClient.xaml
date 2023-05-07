@@ -1,0 +1,34 @@
+﻿<Page x:Class="TaxiPark.Pages.MainClient"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TaxiPark.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="350"
+      Title="MainClient">
+
+    <Grid>
+        <Image Source="/Resourse/Car.png" Width="200" Height="80" Margin="0 -400 0  0"></Image>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Image Width="350" Height="400" Source="/Resourse/Map.png" Margin="-5 0 0  0"></Image>
+            <TextBlock FontWeight="ExtraBold" FontSize="12"  Foreground="White">Ваш заказ</TextBlock>
+            <ListView  Width="350" Height="55" x:Name="LvOrders">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Emplooy.Name, StringFormat='Водитель: {0}'}"/>
+                            <TextBlock Text="{Binding Payment.Name, StringFormat='Способ оплаты: {0}'}" />
+                            <TextBlock Text="{Binding Price, StringFormat='Цена: {0} руб.'}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 10 0 20 ">
+                <Button Margin="0 0 0 0" FontWeight="ExtraBold" FontSize="12" x:Name="ZakazBt" Background="#E9E9E9" Click="ZakazBt_Click"  Height="40" Width="142" >Заказать такси</Button>
+                <Button Margin="0 0 0 0" FontWeight="ExtraBold" FontSize="12" x:Name="ZakaDellzBt" Background="#E9E9E9" Click="ZakaDellzBt_Click" Visibility="Collapsed"  Height="40" Width="142" >Отменить заказ</Button>
+                <Button Margin="40 0 0 0" FontWeight="ExtraBold" FontSize="12" x:Name="ProfilBt" Background="#E9E9E9" Click="ProfilBt_Click" Height="40" Width="142">Профиль</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

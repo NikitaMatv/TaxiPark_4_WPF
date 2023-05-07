@@ -1,0 +1,38 @@
+﻿<Page x:Class="TexiOperator.Pages.MainOperatorPages"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TexiOperator.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainOperatorPages">
+
+    <Grid x:Name="grid" Background="Transparent">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="Transparent" >
+
+            <ListView Background="Transparent" BorderBrush="Transparent" Height="{Binding ActualHeight, ElementName=grid, Mode=OneWay}" Width="{Binding ActualWidth, ElementName=grid, Mode=OneWay}"  Margin="0 0 0  0" x:Name="LvAccept">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Black" BorderThickness="2" Background="White" Width="850" CornerRadius="20">
+                            <StackPanel Orientation="Horizontal" >
+                                <StackPanel  Width="750" Margin="20 0 0 0" VerticalAlignment="Center">
+                                    <TextBlock  FontSize="18" Text="{Binding Id, StringFormat= 'Номер заявки {0}.'}"></TextBlock>
+                                    <TextBlock  FontSize="18" Text="{Binding AddressStart, StringFormat= 'От {0}.'}"></TextBlock>
+                                    <TextBlock FontSize="18" Text="{Binding AddressEnd, StringFormat= 'До {0}.'}"></TextBlock>
+                                    <TextBlock FontSize="18" Text="{Binding Price, StringFormat= 'Цена {0} руб.'}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel>
+                                    <TextBlock x:Name="BtAccept" Style="{StaticResource MainSymbolBtAccept}" Text="&#xf046;" MouseDown="BtAccept_MouseDown"   HorizontalAlignment="Right" Margin="0 14 0 0"  FontSize="50"/>
+                                    <TextBlock x:Name="BtCansel" Style="{StaticResource MainSymbolBtCanse}" Text="&#xf00d;" MouseDown="BtCansel_MouseDown"   HorizontalAlignment="Right" Margin="0 14 5 0"  FontSize="50"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                      
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+          
+        </StackPanel>
+    </Grid>
+</Page>

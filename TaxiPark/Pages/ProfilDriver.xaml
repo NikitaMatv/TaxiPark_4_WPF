@@ -1,0 +1,37 @@
+﻿<Page x:Class="TaxiPark.Pages.ProfilDriver"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TaxiPark.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="350"
+      Title="ProfilDriver">
+
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Image Source="/Resourse/Car.png" Width="200" Height="80" Margin="0 0 0  0"></Image>
+            <TextBlock FontWeight="ExtraBold" FontSize="12" Margin="40 0 0 0" Foreground="White">Логин</TextBlock>
+            <TextBox Opacity="0.6" TextAlignment="Center" Background="#E9E9E9" FontSize="25" Text="{Binding Login}" IsReadOnly="True"  x:Name="LoginTb" Width="250" Height="40" ></TextBox>
+            <TextBlock FontWeight="ExtraBold" FontSize="12" Margin="40 10 0 0" Foreground="White">Пароль</TextBlock>
+            <TextBox  Opacity="0.6"  Background="#E9E9E9" Text="{Binding Password}" TextAlignment="Center" FontSize="25" IsReadOnly="True"  x:Name="PasswordTb" Width="250" Height="40"></TextBox>
+            <TextBlock FontWeight="ExtraBold" FontSize="12" Margin="40 10 0 0" Foreground="White">Имя</TextBlock>
+            <TextBox Opacity="0.6" TextAlignment="Center" Background="#E9E9E9" Text="{Binding Name}" FontSize="25" IsReadOnly="True"  x:Name="NameTb" Width="250" Height="40" ></TextBox>
+            <TextBlock FontWeight="ExtraBold" FontSize="12" Margin="40 10 0 0" Foreground="White">Фамилия</TextBlock>
+            <TextBox Opacity="0.6" TextAlignment="Center" Background="#E9E9E9" Text="{Binding Surname}" FontSize="25" IsReadOnly="True" x:Name="SurName" Width="250" Height="40" ></TextBox>
+            <TextBlock FontWeight="ExtraBold" FontSize="12" Margin="40 10 0 0" Foreground="White">Телефон</TextBlock>
+            <TextBox Opacity="0.6" TextAlignment="Center" Background="#E9E9E9" Text="{Binding Phone}" FontSize="25"  IsReadOnly="True" x:Name="PhoneTb" Width="250" Height="40" ></TextBox>
+            <TextBlock FontWeight="ExtraBold" FontSize="12" Margin="40 10 0 0" Foreground="White">Карта</TextBlock>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center"  HorizontalAlignment="Center">
+                <TextBox Opacity="0.6" TextAlignment="Center" Background="#E9E9E9" Text="{Binding Card}" FontSize="25"  IsReadOnly="True" x:Name="CartTb" Width="250" Height="40" ></TextBox>
+
+            </StackPanel>
+            <Button Margin="0 20 0 0" FontWeight="ExtraBold" FontSize="12" x:Name="EditBt" Background="#E9E9E9" Click="EditBt_Click" Height="40" Width="142">Редактировать</Button>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 10 0 0 ">
+                <Button Margin="0 0 0 0" FontWeight="ExtraBold" FontSize="12" x:Name="MainClientBt" Background="#E9E9E9" Click="MainClientBt_Click"  Height="40" Width="142">На главную</Button>
+                <Button Margin="40 0 0 0" FontWeight="ExtraBold" FontSize="12" x:Name="ExitBt" Background="#E9E9E9" Click="ExitBt_Click" Height="40" Width="142">Выйти</Button>
+
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

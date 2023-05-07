@@ -1,0 +1,29 @@
+﻿<Page x:Class="TaxiPark.Pages.OrdersForDrivings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TaxiPark.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="350"
+      Title="OrdersForDrivings">
+
+    <Grid>
+        <StackPanel>
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Height="414" Margin="0,32,0,0">
+            <Image Source="/Resourse/Car.png" Width="200" Height="80" Margin="0 0 0  200"></Image>
+            <TextBlock FontWeight="ExtraBold" FontSize="12" Margin="0 0 0 0" Foreground="White">Возраст</TextBlock>
+            <TextBox Opacity="0.6" TextAlignment="Center" Background="#E9E9E9" FontSize="25" Text="{Binding Age}"  x:Name="LoginTb" Width="250" Height="40" ></TextBox>
+            <TextBlock FontWeight="ExtraBold" FontSize="12" Margin="0 10 0 0" Foreground="White">Стаж вождения</TextBlock>
+            <TextBox  Opacity="0.6"  Background="#E9E9E9" Text="{Binding AgeDrivers}" TextAlignment="Center" FontSize="25"   x:Name="PasswordTb" Width="250" Height="40"></TextBox>
+
+        </StackPanel>
+      
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 100 0 0 ">
+                <Button Margin="0 0 0 0" FontWeight="ExtraBold" FontSize="12" x:Name="MainClientBt" Background="#E9E9E9" Click="MainClientBt_Click"  Height="40" Width="142">Отмена</Button>
+                <Button Margin="40 0 0 0" FontWeight="ExtraBold" FontSize="12" x:Name="ExitBt" Background="#E9E9E9" Click="ExitBt_Click" Height="40" Width="142">Отправить</Button>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Page>

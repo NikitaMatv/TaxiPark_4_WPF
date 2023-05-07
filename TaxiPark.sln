@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TexiOperator", "TexiOperator\TexiOperator.csproj", "{26962B9D-CF17-47C0-B9FF-6E95DA363525}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiClientWpf", "TaxiClientWpf\TaxiClientWpf.csproj", "{EDF720B4-D2D0-4880-A505-806CFF80F75E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiDriwerWpf", "TaxiDriwerWpf\TaxiDriwerWpf.csproj", "{0A0DF2A2-A1AD-4B0D-8334-925D9CF9D214}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiAdminWpf", "TaxiAdminWpf\TaxiAdminWpf.csproj", "{773F1551-2E07-4588-A958-8386243A83CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26962B9D-CF17-47C0-B9FF-6E95DA363525}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26962B9D-CF17-47C0-B9FF-6E95DA363525}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26962B9D-CF17-47C0-B9FF-6E95DA363525}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26962B9D-CF17-47C0-B9FF-6E95DA363525}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDF720B4-D2D0-4880-A505-806CFF80F75E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDF720B4-D2D0-4880-A505-806CFF80F75E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDF720B4-D2D0-4880-A505-806CFF80F75E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDF720B4-D2D0-4880-A505-806CFF80F75E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A0DF2A2-A1AD-4B0D-8334-925D9CF9D214}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A0DF2A2-A1AD-4B0D-8334-925D9CF9D214}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A0DF2A2-A1AD-4B0D-8334-925D9CF9D214}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A0DF2A2-A1AD-4B0D-8334-925D9CF9D214}.Release|Any CPU.Build.0 = Release|Any CPU
+		{773F1551-2E07-4588-A958-8386243A83CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{773F1551-2E07-4588-A958-8386243A83CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{773F1551-2E07-4588-A958-8386243A83CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{773F1551-2E07-4588-A958-8386243A83CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9722DA75-C405-4DB3-8DAA-11E534791AEB}
+	EndGlobalSection
+EndGlobal

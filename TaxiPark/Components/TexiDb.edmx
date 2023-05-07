@@ -1,0 +1,521 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище TaxiDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Emplooy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="EarningFromOrders" Type="int" />
+          <Property Name="Phone" Type="decimal" Precision="11" Scale="0" />
+          <Property Name="Card" Type="decimal" Precision="16" Scale="0" />
+          <Property Name="OrdersCompl" Type="int" />
+          <Property Name="OchenkaObhay" Type="int" />
+          <Property Name="IsBan" Type="int" />
+        </EntityType>
+        <EntityType Name="OchenkaZaOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ochenka" Type="int" />
+          <Property Name="IdOrder" Type="int" />
+          <Property Name="MoneyTea" Type="int" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="TaxistId" Type="int" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="AddressStart" Type="nvarchar(max)" />
+          <Property Name="AddressEnd" Type="nvarchar(max)" />
+          <Property Name="Price" Type="int" />
+          <Property Name="TypePaymentId" Type="int" />
+          <Property Name="TypeId" Type="int" />
+          <Property Name="IsAccept" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderForDriver">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Age" Type="int" />
+          <Property Name="AgeDrivers" Type="int" />
+          <Property Name="IdEmpooy" Type="int" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_Emplooy_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Emplooy" Type="Self.Emplooy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Emplooy">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OchenkaZaOrder_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="OchenkaZaOrder" Type="Self.OchenkaZaOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OchenkaZaOrder">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Emplooy">
+          <End Role="Emplooy" Type="Self.Emplooy" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Emplooy">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="TaxistId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Emplooy1">
+          <End Role="Emplooy" Type="Self.Emplooy" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Emplooy">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Payment">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="TypePaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderForDriver_Emplooy">
+          <End Role="Emplooy" Type="Self.Emplooy" Multiplicity="0..1" />
+          <End Role="OrderForDriver" Type="Self.OrderForDriver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Emplooy">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderForDriver">
+              <PropertyRef Name="IdEmpooy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище TaxiDBModelContainer">
+          <EntitySet Name="Emplooy" EntityType="Self.Emplooy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OchenkaZaOrder" EntityType="Self.OchenkaZaOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderForDriver" EntityType="Self.OrderForDriver" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Emplooy_Role" Association="Self.FK_Emplooy_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Emplooy" EntitySet="Emplooy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OchenkaZaOrder_Order" Association="Self.FK_OchenkaZaOrder_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OchenkaZaOrder" EntitySet="OchenkaZaOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Emplooy" Association="Self.FK_Order_Emplooy">
+            <End Role="Emplooy" EntitySet="Emplooy" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Emplooy1" Association="Self.FK_Order_Emplooy1">
+            <End Role="Emplooy" EntitySet="Emplooy" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Payment" Association="Self.FK_Order_Payment">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Type" Association="Self.FK_Order_Type">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderForDriver_Emplooy" Association="Self.FK_OrderForDriver_Emplooy">
+            <End Role="Emplooy" EntitySet="Emplooy" />
+            <End Role="OrderForDriver" EntitySet="OrderForDriver" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TaxiDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Emplooy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EarningFromOrders" Type="Int32" />
+          <Property Name="Phone" Type="Decimal" Precision="11" Scale="0" />
+          <Property Name="Card" Type="Decimal" Precision="16" Scale="0" />
+          <Property Name="OrdersCompl" Type="Int32" />
+          <Property Name="OchenkaObhay" Type="Int32" />
+          <Property Name="IsBan" Type="Int32" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Emplooy_Role" FromRole="Emplooy" ToRole="Role" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Emplooy" FromRole="Emplooy" ToRole="Order" />
+          <NavigationProperty Name="Order1" Relationship="Self.FK_Order_Emplooy1" FromRole="Emplooy" ToRole="Order" />
+          <NavigationProperty Name="OrderForDriver" Relationship="Self.FK_OrderForDriver_Emplooy" FromRole="Emplooy" ToRole="OrderForDriver" />
+        </EntityType>
+        <EntityType Name="OchenkaZaOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ochenka" Type="Int32" />
+          <Property Name="IdOrder" Type="Int32" />
+          <Property Name="MoneyTea" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_OchenkaZaOrder_Order" FromRole="OchenkaZaOrder" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TaxistId" Type="Int32" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="AddressStart" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AddressEnd" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="TypePaymentId" Type="Int32" />
+          <Property Name="TypeId" Type="Int32" />
+          <Property Name="IsAccept" Type="Int32" />
+          <NavigationProperty Name="Emplooy" Relationship="Self.FK_Order_Emplooy" FromRole="Order" ToRole="Emplooy" />
+          <NavigationProperty Name="Emplooy1" Relationship="Self.FK_Order_Emplooy1" FromRole="Order" ToRole="Emplooy" />
+          <NavigationProperty Name="OchenkaZaOrder" Relationship="Self.FK_OchenkaZaOrder_Order" FromRole="Order" ToRole="OchenkaZaOrder" />
+          <NavigationProperty Name="Payment" Relationship="Self.FK_Order_Payment" FromRole="Order" ToRole="Payment" />
+          <NavigationProperty Name="Type" Relationship="Self.FK_Order_Type" FromRole="Order" ToRole="Type" />
+        </EntityType>
+        <EntityType Name="OrderForDriver">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="AgeDrivers" Type="Int32" />
+          <Property Name="IdEmpooy" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="Emplooy" Relationship="Self.FK_OrderForDriver_Emplooy" FromRole="OrderForDriver" ToRole="Emplooy" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Payment" FromRole="Payment" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Emplooy" Relationship="Self.FK_Emplooy_Role" FromRole="Role" ToRole="Emplooy" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Type" FromRole="Type" ToRole="Order" />
+        </EntityType>
+        <Association Name="FK_Emplooy_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Emplooy" Type="Self.Emplooy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Emplooy">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Emplooy">
+          <End Role="Emplooy" Type="Self.Emplooy" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Emplooy">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="TaxistId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Emplooy1">
+          <End Role="Emplooy" Type="Self.Emplooy" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Emplooy">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderForDriver_Emplooy">
+          <End Role="Emplooy" Type="Self.Emplooy" Multiplicity="0..1" />
+          <End Role="OrderForDriver" Type="Self.OrderForDriver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Emplooy">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderForDriver">
+              <PropertyRef Name="IdEmpooy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OchenkaZaOrder_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="OchenkaZaOrder" Type="Self.OchenkaZaOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OchenkaZaOrder">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Payment">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="TypePaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TaxiDBEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Emplooy" EntityType="Self.Emplooy" />
+          <EntitySet Name="OchenkaZaOrder" EntityType="Self.OchenkaZaOrder" />
+          <EntitySet Name="Order" EntityType="Self.Order" />
+          <EntitySet Name="OrderForDriver" EntityType="Self.OrderForDriver" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Type" EntityType="Self.Type" />
+          <AssociationSet Name="FK_Emplooy_Role" Association="Self.FK_Emplooy_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Emplooy" EntitySet="Emplooy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Emplooy" Association="Self.FK_Order_Emplooy">
+            <End Role="Emplooy" EntitySet="Emplooy" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Emplooy1" Association="Self.FK_Order_Emplooy1">
+            <End Role="Emplooy" EntitySet="Emplooy" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderForDriver_Emplooy" Association="Self.FK_OrderForDriver_Emplooy">
+            <End Role="Emplooy" EntitySet="Emplooy" />
+            <End Role="OrderForDriver" EntitySet="OrderForDriver" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OchenkaZaOrder_Order" Association="Self.FK_OchenkaZaOrder_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OchenkaZaOrder" EntitySet="OchenkaZaOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Payment" Association="Self.FK_Order_Payment">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Type" Association="Self.FK_Order_Type">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище TaxiDBModelContainer" CdmEntityContainer="TaxiDBEntities2">
+          <EntitySetMapping Name="Emplooy">
+            <EntityTypeMapping TypeName="TaxiDBModel.Emplooy">
+              <MappingFragment StoreEntitySet="Emplooy">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EarningFromOrders" ColumnName="EarningFromOrders" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Card" ColumnName="Card" />
+                <ScalarProperty Name="OrdersCompl" ColumnName="OrdersCompl" />
+                <ScalarProperty Name="OchenkaObhay" ColumnName="OchenkaObhay" />
+                <ScalarProperty Name="IsBan" ColumnName="IsBan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OchenkaZaOrder">
+            <EntityTypeMapping TypeName="TaxiDBModel.OchenkaZaOrder">
+              <MappingFragment StoreEntitySet="OchenkaZaOrder">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ochenka" ColumnName="Ochenka" />
+                <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+                <ScalarProperty Name="MoneyTea" ColumnName="MoneyTea" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="TaxiDBModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TaxistId" ColumnName="TaxistId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="AddressStart" ColumnName="AddressStart" />
+                <ScalarProperty Name="AddressEnd" ColumnName="AddressEnd" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="TypePaymentId" ColumnName="TypePaymentId" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="IsAccept" ColumnName="IsAccept" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderForDriver">
+            <EntityTypeMapping TypeName="TaxiDBModel.OrderForDriver">
+              <MappingFragment StoreEntitySet="OrderForDriver">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="AgeDrivers" ColumnName="AgeDrivers" />
+                <ScalarProperty Name="IdEmpooy" ColumnName="IdEmpooy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payment">
+            <EntityTypeMapping TypeName="TaxiDBModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="TaxiDBModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type">
+            <EntityTypeMapping TypeName="TaxiDBModel.Type">
+              <MappingFragment StoreEntitySet="Type">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

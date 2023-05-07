@@ -1,0 +1,18 @@
+﻿<Window x:Class="TaxiPark.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaxiPark"
+        mc:Ignorable="d"
+        Title="BlackCar" Height="650" Width="350"
+       ResizeMode="CanMinimize"
+        Icon="/Resourse/Car.png">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Resourse/BackgroundS.jpg"></ImageBrush>
+        </Grid.Background>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
+    </Grid>
+</Window>
