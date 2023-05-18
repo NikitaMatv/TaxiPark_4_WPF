@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaxiClientWpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="1000" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" WindowStyle="None" BorderThickness="0">
+        Title="MainWindow" Height="650" Width="1000" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" WindowStyle="None" BorderThickness="0"  Icon="/Resource/Car.png">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="1,0" StartPoint="0.02,0">
