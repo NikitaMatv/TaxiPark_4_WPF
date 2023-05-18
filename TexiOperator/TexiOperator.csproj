@@ -128,6 +128,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\OrderForDriwPages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ProfelOperstor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -145,6 +149,9 @@
     </Compile>
     <Compile Include="Pages\MainOperatorPages.xaml.cs">
       <DependentUpon>MainOperatorPages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\OrderForDriwPages.xaml.cs">
+      <DependentUpon>OrderForDriwPages.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ProfelOperstor.xaml.cs">
       <DependentUpon>ProfelOperstor.xaml</DependentUpon>

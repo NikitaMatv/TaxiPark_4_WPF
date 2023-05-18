@@ -9,21 +9,27 @@
       Title="OrderForDriwingPages">
 
     <Grid>
-        <StackPanel>
-            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center"  Margin="0,32,0,0">
-                
-                <TextBlock FontWeight="ExtraBold" FontSize="12" Margin="0 0 0 0" Foreground="Black">Возраст</TextBlock>
-                <TextBox Opacity="0.6" TextAlignment="Center" Style="{StaticResource RoundTextBlock}"  FontSize="25" Text="{Binding Age}"  x:Name="LoginTb" Width="250" Height="40" ></TextBox>
-                <TextBlock FontWeight="ExtraBold" FontSize="12" Margin="0 10 0 0" Foreground="Black">Стаж вождения</TextBlock>
-                <TextBox  Opacity="0.6" Style="{StaticResource RoundTextBlock}" Text="{Binding AgeDrivers}" TextAlignment="Center" FontSize="25"   x:Name="PasswordTb" Width="250" Height="40"></TextBox>
+        <Border Background="White" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="2" Height="300" Width="400" CornerRadius="50">
+            <StackPanel >
+     
+                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center"  Margin="0,32,0,0">
 
-            </StackPanel>
+                    <TextBlock FontWeight="ExtraBold" FontSize="12" Margin="0 0 0 0" Foreground="Black">Возраст</TextBlock>
+                    <TextBox Opacity="0.6" TextAlignment="Center" Style="{StaticResource RoundTextBlock}"  FontSize="25" Text="{Binding Age}"  x:Name="LoginTb" Width="250" Height="40" ></TextBox>
+                    <TextBlock FontWeight="ExtraBold" FontSize="12" Margin="0 10 0 0" Foreground="Black">Стаж вождения</TextBlock>
+                    <TextBox  Opacity="0.6" Style="{StaticResource RoundTextBlock}" Text="{Binding AgeDrivers}" TextAlignment="Center" FontSize="25"   x:Name="PasswordTb" Width="250" Height="40"></TextBox>
 
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 100 0 0 ">
-                <Button Margin="0 0 0 0" FontWeight="ExtraBold" FontSize="12" x:Name="MainClientBt" Style="{StaticResource RoundButton}" Click="MainClientBt_Click"  Height="40" Width="142">Отмена</Button>
-                <Button Margin="40 0 0 0" FontWeight="ExtraBold" FontSize="12" x:Name="ExitBt"  Style="{StaticResource RoundButton}" Click="ExitBt_Click" Height="40" Width="142">Отправить</Button>
-            </StackPanel>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 50 0 0 ">
+            
+                    
+                    <Button Margin="0 0 0 0" FontWeight="ExtraBold" FontSize="12" x:Name="ExitBt"  Style="{StaticResource RoundButton}" Click="ExitBt_Click" Height="40" Width="142">Отправить</Button>
+                    <Button Margin="40 0 0 0" FontWeight="ExtraBold" FontSize="12" x:Name="MainClientBt" Style="{StaticResource RoundButton}" Click="MainClientBt_Click"  Height="40" Width="142">Отмена</Button>
+                </StackPanel>
+     
         </StackPanel>
+        </Border>
 
-        </Grid>
+    </Grid>
 </Page>

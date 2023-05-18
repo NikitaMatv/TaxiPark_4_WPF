@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace TaxiAdminWpf.Components
 {
@@ -19,6 +20,34 @@ namespace TaxiAdminWpf.Components
                 else
                 {
                     return "";
+                }
+            }
+        }
+        public Visibility VisabilityBanAccept
+        {
+            get
+            {
+                if(IsBan == 1)
+                {
+                    return Visibility.Visible;
+                }
+                else
+                {
+                    return Visibility.Hidden;
+                }
+            }
+        }
+        public Visibility VisabilityBanNo
+        {
+            get
+            {
+                if (IsBan == 1)
+                {
+                    return Visibility.Hidden;
+                }
+                else
+                {
+                    return Visibility.Visible;
                 }
             }
         }

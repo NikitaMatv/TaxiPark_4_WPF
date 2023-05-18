@@ -23,8 +23,8 @@
                                     <TextBlock FontSize="25" Foreground="{Binding CollorBan}" Text="{Binding Phone, StringFormat= 'Телефон {0}'}"></TextBlock>
                                 </StackPanel>
                                 <StackPanel>
-                                    <TextBlock x:Name="BtAccept" Style="{StaticResource MainSymbolBtAccept}" Text="&#xf046;" MouseDown="BtAccept_MouseDown"   HorizontalAlignment="Right" Margin="0 14 0 0"  FontSize="50"/>
-                                    <TextBlock x:Name="BtCansel" Style="{StaticResource MainSymbolBtCanse}" Text="&#xf00d;" MouseDown="BtCansel_MouseDown"   HorizontalAlignment="Right" Margin="0 14 5 0"  FontSize="50"/>
+                                    <TextBlock x:Name="BtAccept" Style="{StaticResource MainSymbolBtAccept}" Text="&#xf046;" MouseDown="BtAccept_MouseDown" Visibility="{Binding VisabilityBanNo}"   HorizontalAlignment="Right" Margin="0 14 0 0"  FontSize="50"/>
+                                    <TextBlock x:Name="BtCansel" Style="{StaticResource MainSymbolBtCanse}" Text="&#xf00d;" MouseDown="BtCansel_MouseDown" Visibility="{Binding VisabilityBanAccept}"  HorizontalAlignment="Right" Margin="0 14 5 0"  FontSize="50"/>
                                 </StackPanel>
                             </StackPanel>
                         </Border>

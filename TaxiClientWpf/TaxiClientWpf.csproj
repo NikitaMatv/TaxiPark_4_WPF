@@ -136,6 +136,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\RegPages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\AutorPages.xaml.cs">
@@ -155,6 +159,9 @@
     </Compile>
     <Compile Include="Pages\ProfilClietnPages.xaml.cs">
       <DependentUpon>ProfilClietnPages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RegPages.xaml.cs">
+      <DependentUpon>RegPages.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

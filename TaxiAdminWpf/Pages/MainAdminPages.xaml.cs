@@ -24,7 +24,7 @@ namespace TaxiAdminWpf.Pages
         public MainAdminPages()
         {
             InitializeComponent();
-            LvAccept.ItemsSource = App.DB.OrderForDriver.Where(x => x.Status == null).ToList();
+            LvAccept.ItemsSource = App.DB.OrderForDriver.Where(x => x.Status == 1).ToList();
 
 
 
@@ -51,10 +51,10 @@ namespace TaxiAdminWpf.Pages
             var selectedclient = LvAccept.SelectedItem as OrderForDriver;
             if (selectedclient == null)
             {
-                MessageBox.Show("Выберете закакз");
+                MessageBox.Show("Выберете заявку");
                 return;
             }
-            selectedclient.Status = 1;
+            selectedclient.Status = 3;
             int id = (int)selectedclient.IdEmpooy;
 
             if (selectedclient != null)
@@ -87,7 +87,7 @@ namespace TaxiAdminWpf.Pages
                 MessageBox.Show("Выберете закакз");
                 return;
             }
-            selectedclient.Status = 1;
+            selectedclient.Status = 3;
             int id = (int)selectedclient.IdEmpooy;
 
             if (selectedclient != null)

@@ -51,7 +51,15 @@ namespace TexiOperator
 
         private void BtSender_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //MainFrame.NavigationService.Navigate(new AutorPages());
+            if (App.LoggedEmployee != null)
+            {
+
+                MainFrame.NavigationService.Navigate(new OrderForDriwPages());
+            }
+            else
+            {
+                MessageBox.Show("Нужно войти в аккаунт");
+            }
         }
 
         private void BtOrder_MouseDown(object sender, MouseButtonEventArgs e)
@@ -90,10 +98,10 @@ namespace TexiOperator
            
         }
 
-        private void BtInform_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            MainFrame.NavigationService.Navigate(new InformPages());
-        }
+        //private void BtInform_MouseDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    MainFrame.NavigationService.Navigate(new InformPages());
+        //}
 
        
     }

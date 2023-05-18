@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using TaxiClientWpf.Components;
 namespace TaxiClientWpf.Pages
 {
     /// <summary>
@@ -55,7 +55,10 @@ namespace TaxiClientWpf.Pages
 
         }
 
-
+        private void RegBt_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RegPages(new Emplooy()));
+        }
     }
 }
    
